@@ -11,9 +11,9 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel
+BuildRequires:	gnutls-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libtool
-BuildRequires:	openssl-devel >= 0.9.7c
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,6 +34,7 @@ Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	glib2-devel
+Requires:	gnutls-devel
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
