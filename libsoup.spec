@@ -1,23 +1,23 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.2.2
+Version:	2.2.3
 Release:	1
-License:	LGPL
+License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	59f95a1ce0f86b4dc1687f24e94f899a
-Patch0:		%{name}-gnutls.patch
+Source0:	http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
+# Source0-md5:	2591f32e036a5869f7e2bd0d95e6f14b
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.4.4
+BuildRequires:	glib2-devel >= 1:2.6.3
 BuildRequires:	gnutls-devel >= 1.0.6
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool
 BuildRequires:	libgpg-error-devel >= 0.4
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 2.0
+BuildRequires:	libxml2-devel >= 1:2.6.17
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,9 +37,9 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.4.4
+Requires:	glib2-devel >= 1:2.6.3
 Requires:	gnutls-devel >= 1.0.6
-Requires:	libxml2-devel >= 2.0
+Requires:	libxml2-devel >= 1:2.6.17
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
@@ -62,7 +62,6 @@ Biblioteki statyczne SOAP.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 rm -f missing
@@ -78,7 +77,6 @@ intltoolize --copy --force
 	--enable-gtk-doc \
 	--enable-libgpg-error \
 	--with-html-dir=%{_gtkdocdir}
-
 %{__make}
 
 %install
@@ -97,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog NEWS README TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
