@@ -1,4 +1,3 @@
-
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
@@ -34,6 +33,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	glib2-devel
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
