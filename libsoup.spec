@@ -1,8 +1,10 @@
+# hack for distributor fault
+%define 	broken_ver 1.99.20
 
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	1.99.20
+Version:	1.99.22
 Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
@@ -55,7 +57,7 @@ SOAP static libraries.
 Biblioteki statyczne SOAP.
 
 %prep
-%setup  -q
+%setup  -q -n %{name}-%{broken_ver}
 
 %build
 rm -f missing
