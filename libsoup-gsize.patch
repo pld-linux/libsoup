@@ -1,6 +1,6 @@
 --- libsoup-2.1.2/libsoup/soup-socket.h.wiget	2003-12-12 15:55:43.954279912 +0100
-+++ libsoup-2.1.2/libsoup/soup-socket.h	2003-12-12 15:56:28.503462805 +0100
-@@ -89,8 +89,8 @@
++++ libsoup-2.1.2/libsoup/soup-socket.h	2003-12-12 16:13:35.175339423 +0100
+@@ -89,20 +89,20 @@
  
  SoupSocketIOStatus  soup_socket_read       (SoupSocket         *sock,
  					    gpointer            buffer,
@@ -11,7 +11,12 @@
  SoupSocketIOStatus  soup_socket_read_until (SoupSocket         *sock,
  					    gpointer            buffer,
  					    guint               len,
-@@ -101,8 +101,8 @@
+ 					    gconstpointer       boundary,
+-					    guint               boundary_len,
+-					    guint              *nread,
++					    gsize               boundary_len,
++					    gsize              *nread,
+ 					    gboolean           *got_boundary);
  
  SoupSocketIOStatus  soup_socket_write      (SoupSocket         *sock,
  					    gconstpointer       buffer,
