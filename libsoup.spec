@@ -1,10 +1,10 @@
 
-%define _snap 20030405
+%define _snap 20030412
 
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	1.99.16
+Version:	1.99.17
 Release:	0.%{_snap}.1
 License:	LGPL
 Group:		X11/Libraries
