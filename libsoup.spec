@@ -1,15 +1,12 @@
 
-%define _snap 20030425
-
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	1.99.18
-Release:	0.%{_snap}.1
+Version:	1.99.20
+Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-Patch0:		%{name}-build_doc.patch
+Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/1.99/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -58,7 +55,6 @@ Biblioteki statyczne SOAP.
 
 %prep
 %setup  -q
-%patch0 -p1
 
 %build
 rm -f missing
@@ -100,7 +96,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
-%{_gtkdocdir}/*
 %{_pkgconfigdir}/*
 
 %files static
