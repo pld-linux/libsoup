@@ -7,6 +7,7 @@ Release:	0.1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/1.99/%{name}-%{version}.tar.bz2
+# Source0-md5: 78b2e1c656d361aa1c8252934ee7ddc1
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
