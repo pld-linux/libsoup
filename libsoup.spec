@@ -3,17 +3,18 @@ Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
 Version:	2.1.7
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
 # Source0-md5:	20241712388ad3df842109f4c0194674
 #Source0:	%{name}-%{version}-%{snap}.tar.bz2
+Patch0:		%{name}-gnutls.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.3.0
-BuildRequires:	gnutls-devel >= 1.0.0
+BuildRequires:	gnutls-devel >= 1.0.6
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	libtool
@@ -35,9 +36,9 @@ serwerów dla ³atwego wywo³ywania i implementowania metod SOAP.
 Summary:	Include files etc to develop SOAP applications
 Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.3.0
-Requires:	gnutls-devel >= 1.0.0
+Requires:	gnutls-devel >= 1.0.6
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
@@ -50,7 +51,7 @@ samemu tworzyæ sobie aplikacje korzystaj±ce z SOAP.
 Summary:	SOAP static libraries
 Summary(pl):	Biblioteki statyczne SOAP
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 SOAP static libraries.
@@ -59,7 +60,8 @@ SOAP static libraries.
 Biblioteki statyczne SOAP.
 
 %prep
-%setup  -q
+%setup -q
+%patch0 -p1
 
 %build
 rm -f missing
