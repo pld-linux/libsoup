@@ -13,7 +13,7 @@ BuildRequires:	automake
 BuildRequires:	glib2-devel
 BuildRequires:	gtk-doc
 BuildRequires:	libtool
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.7c
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
