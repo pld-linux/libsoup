@@ -1,0 +1,23 @@
+diff -urN aaa/libsoup-1.99.8/Makefile.am libsoup-1.99.8/Makefile.am
+--- aaa/libsoup-1.99.8/Makefile.am	Mon Nov 25 20:02:15 2002
++++ libsoup-1.99.8/Makefile.am	Fri Feb 14 14:05:04 2003
+@@ -1,6 +1,6 @@
+ ## Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = libsoup tests 
++SUBDIRS = libsoup tests docs
+ 
+ EXTRA_DIST = soup-2.0.pc.in
+ 
+diff -urN aaa/libsoup-1.99.8/configure.in libsoup-1.99.8/configure.in
+--- aaa/libsoup-1.99.8/configure.in	Tue Feb 11 22:29:38 2003
++++ libsoup-1.99.8/configure.in	Fri Feb 14 14:16:15 2003
+@@ -375,6 +375,8 @@
+ 	Makefile
+ 	libsoup/Makefile
+ 	tests/Makefile
++	docs/Makefile
++	docs/reference/Makefile
+ 	])
+ 
+ echo "
