@@ -1,5 +1,5 @@
 
-%define _snap 20030329
+%define _snap 20030405
 
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
