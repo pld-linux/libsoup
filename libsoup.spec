@@ -1,20 +1,22 @@
+%define	snap	20031227
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
 Version:	2.1.2
-Release:	2
+Release:	2.%{snap}.1
 License:	LGPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	94fbad0cb4c348f373f2d319d482706b
+Source0:	%{name}-%{version}-%{snap}.tar.bz2
+# Source0-md5:	c41320320ddf2231be433ea7d0578042
+#Source0:	ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/2.1/%{name}-%{version}.tar.bz2
 URL:		http://www.gnome.org/
 Patch0:		%{name}-gnutls.patch
-Patch1:		%{name}-gsize.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	glib2-devel >= 2.3.0
 BuildRequires:	gnutls-devel >= 1.0.0
 BuildRequires:	gtk-doc
+BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,7 +37,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	glib2-devel >= 2.2.0
+Requires:	glib2-devel >= 2.3.0
 Requires:	gnutls-devel >= 1.0.0
 
 %description devel
@@ -60,10 +62,11 @@ Biblioteki statyczne SOAP.
 %prep
 %setup  -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 rm -f missing
+glib-gettextize --copy --force
+intltoolize --copy --force
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
