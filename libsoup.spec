@@ -17,6 +17,7 @@ BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	intltool
 BuildRequires:	libgpg-error-devel >= 0.4
 BuildRequires:	libtool
+BuildRequires:	libxml2-devel >= 2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,6 +39,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.4.0
 Requires:	gnutls-devel >= 1.0.6
+Requires:	libxml2-devel >= 2.0
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
