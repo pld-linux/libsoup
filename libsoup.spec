@@ -64,9 +64,8 @@ Biblioteki statyczne SOAP.
 %setup -q
 
 %build
-rm -f missing
-glib-gettextize --copy --force
-intltoolize --copy --force
+%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
