@@ -1,22 +1,21 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.2.96
-Release:	2
+Version:	2.2.98
+Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	2704961ca2b9597819f21b40d4a0e0aa
+# Source0-md5:	c779f84c4add124e704e6ea3ccc4039c
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.12.1
+BuildRequires:	glib2-devel >= 1:2.12.6
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk-doc >= 1.6
-BuildRequires:	intltool >= 0.35
 BuildRequires:	libgpg-error-devel >= 0.4
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.26
+BuildRequires:	libxml2-devel >= 1:2.6.27
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,14 +31,26 @@ do wysy³ania i serwowania ¿±dañ SOAP oraz WSDL (Web Service Definition
 Language) dla kompilatora C, który generuje klienckie stub i szkielety
 serwerów dla ³atwego wywo³ywania i implementowania metod SOAP.
 
+%package apidocs
+Summary:	libsoup API documentation
+Summary(pl):	Dokumentacja API libsoup
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libsoup API documentation.
+
+%description apidocs -l pl
+Dokumentacja API libsoup.
+
 %package devel
 Summary:	Include files etc to develop SOAP applications
 Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.1
+Requires:	glib2-devel >= 1:2.12.6
 Requires:	gnutls-devel >= 1.0.6
-Requires:	libxml2-devel >= 1:2.6.26
+Requires:	libxml2-devel >= 1:2.6.27
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
@@ -65,7 +76,6 @@ Biblioteki statyczne SOAP.
 
 %build
 %{__glib_gettextize}
-%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
@@ -97,13 +107,16 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
 %{_pkgconfigdir}/*
-%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
