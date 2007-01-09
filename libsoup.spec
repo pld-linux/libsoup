@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	c779f84c4add124e704e6ea3ccc4039c
+# Source0-md5:	b2f5df25de4a5c00653d1667eb1b5687
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
