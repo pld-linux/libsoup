@@ -1,5 +1,5 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
-Summary(pl):	Implementacja w C SOAP (Simple Object Access Protocol)
+Summary(pl.UTF-8):   Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
 Version:	2.2.99
 Release:	1
@@ -25,27 +25,27 @@ sending and servicing SOAP requests, and a WSDL (Web Service
 Definition Language) to C compiler which generates client stubs and
 server skeletons for easily calling and implementing SOAP methods.
 
-%description -l pl
+%description -l pl.UTF-8
 Pakiet dostarcza interfejs kolejkowalnego, asynchronicznego mechanizmu
-do wysy³ania i serwowania ¿±dañ SOAP oraz WSDL (Web Service Definition
-Language) dla kompilatora C, który generuje klienckie stub i szkielety
-serwerów dla ³atwego wywo³ywania i implementowania metod SOAP.
+do wysyÅ‚ania i serwowania Å¼Ä…daÅ„ SOAP oraz WSDL (Web Service Definition
+Language) dla kompilatora C, ktÃ³ry generuje klienckie stub i szkielety
+serwerÃ³w dla Å‚atwego wywoÅ‚ywania i implementowania metod SOAP.
 
 %package apidocs
 Summary:	libsoup API documentation
-Summary(pl):	Dokumentacja API libsoup
+Summary(pl.UTF-8):   Dokumentacja API libsoup
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 libsoup API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API libsoup.
 
 %package devel
 Summary:	Include files etc to develop SOAP applications
-Summary(pl):	Pliki nag³ówkowe, dokumentacja dla SOAP
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.7
@@ -55,20 +55,20 @@ Requires:	libxml2-devel >= 1:2.6.27
 %description devel
 Header files, etc you can use to develop SOAP applications.
 
-%description devel -l pl
-Pliki nag³ówkowe itp. Jednym s³owem wszystko czego potrzebujesz aby
-samemu tworzyæ sobie aplikacje korzystaj±ce z SOAP.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe itp. Jednym sÅ‚owem wszystko czego potrzebujesz aby
+samemu tworzyÄ‡ sobie aplikacje korzystajÄ…ce z SOAP.
 
 %package static
 Summary:	SOAP static libraries
-Summary(pl):	Biblioteki statyczne SOAP
+Summary(pl.UTF-8):   Biblioteki statyczne SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 SOAP static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne SOAP.
 
 %prep
