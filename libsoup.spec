@@ -1,5 +1,5 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
-Summary(pl.UTF-8):   Implementacja w C SOAP (Simple Object Access Protocol)
+Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
 Version:	2.2.99
 Release:	1
@@ -33,7 +33,7 @@ serwerów dla łatwego wywoływania i implementowania metod SOAP.
 
 %package apidocs
 Summary:	libsoup API documentation
-Summary(pl.UTF-8):   Dokumentacja API libsoup
+Summary(pl.UTF-8):	Dokumentacja API libsoup
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -45,7 +45,7 @@ Dokumentacja API libsoup.
 
 %package devel
 Summary:	Include files etc to develop SOAP applications
-Summary(pl.UTF-8):   Pliki nagłówkowe, dokumentacja dla SOAP
+Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.7
@@ -61,7 +61,7 @@ samemu tworzyć sobie aplikacje korzystające z SOAP.
 
 %package static
 Summary:	SOAP static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne SOAP
+Summary(pl.UTF-8):	Biblioteki statyczne SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
