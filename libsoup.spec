@@ -1,16 +1,16 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.2.101
+Version:	2.2.102
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/gnome/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	54cc14dd5bc72de91e257e4ed2b4228e
+# Source0-md5:	2d697fbce254ab337bd9b8dfbc8c7c82
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.12.7
+BuildRequires:	glib2-devel >= 1:2.14.1
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	libgpg-error-devel >= 0.4
@@ -48,7 +48,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.7
+Requires:	glib2-devel >= 1:2.14.1
 Requires:	gnutls-devel >= 1.0.6
 Requires:	libxml2-devel >= 1:2.6.27
 
