@@ -2,11 +2,12 @@ Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
 Version:	2.2.104
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
 # Source0-md5:	ab3b10b1c97de5abe38a748a3656da4c
+Patch0:		%{name}-static.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
@@ -30,18 +31,6 @@ Pakiet dostarcza interfejs kolejkowalnego, asynchronicznego mechanizmu
 do wysyłania i serwowania żądań SOAP oraz WSDL (Web Service Definition
 Language) dla kompilatora C, który generuje klienckie stub i szkielety
 serwerów dla łatwego wywoływania i implementowania metod SOAP.
-
-%package apidocs
-Summary:	libsoup API documentation
-Summary(pl.UTF-8):	Dokumentacja API libsoup
-Group:		Documentation
-Requires:	gtk-doc-common
-
-%description apidocs
-libsoup API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API libsoup.
 
 %package devel
 Summary:	Include files etc to develop SOAP applications
@@ -71,8 +60,21 @@ SOAP static libraries.
 %description static -l pl.UTF-8
 Biblioteki statyczne SOAP.
 
+%package apidocs
+Summary:	libsoup API documentation
+Summary(pl.UTF-8):	Dokumentacja API libsoup
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libsoup API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libsoup.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__glib_gettextize}
@@ -105,19 +107,20 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libsoup-2.2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsoup-2.2.so.8
+
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsoup-2.2.so
+%{_libdir}/libsoup-2.2.la
+%{_includedir}/libsoup-2.2
+%{_pkgconfigdir}/libsoup-2.2.pc
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libsoup-2.2.a
 
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/%{name}
-
-%files devel
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*
-%{_pkgconfigdir}/*
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
