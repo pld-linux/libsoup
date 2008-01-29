@@ -1,22 +1,22 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.2.104
-Release:	4
-License:	LGPL v2
-Group:		X11/Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.2/%{name}-%{version}.tar.bz2
-# Source0-md5:	ab3b10b1c97de5abe38a748a3656da4c
+Version:	2.3.0.1
+Release:	1
+License:	LGPL v2+
+Group:		Libraries
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.3/%{name}-%{version}.tar.bz2
+# Source0-md5:	56b2692fd277850e52759251938520e7
 Patch0:		%{name}-static.patch
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.14.1
+BuildRequires:	glib2-devel >= 1:2.15.4
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	libgpg-error-devel >= 0.4
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.27
+BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,11 +35,11 @@ serwerów dla łatwego wywoływania i implementowania metod SOAP.
 %package devel
 Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.14.1
-Requires:	gnutls-devel >= 1.0.6
-Requires:	libxml2-devel >= 1:2.6.27
+Requires:	glib2-devel >= 1:2.15.4
+Requires:	gnutls-devel >= 1.2.5
+Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
@@ -51,7 +51,7 @@ samemu tworzyć sobie aplikacje korzystające z SOAP.
 %package static
 Summary:	SOAP static libraries
 Summary(pl.UTF-8):	Biblioteki statyczne SOAP
-Group:		X11/Development/Libraries
+Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
@@ -107,19 +107,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libsoup-2.2.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libsoup-2.2.so.8
+%attr(755,root,root) %{_libdir}/libsoup-2.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsoup-2.4.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libsoup-2.2.so
-%{_libdir}/libsoup-2.2.la
-%{_includedir}/libsoup-2.2
-%{_pkgconfigdir}/libsoup-2.2.pc
+%attr(755,root,root) %{_libdir}/libsoup-2.4.so
+%{_libdir}/libsoup-2.4.la
+%{_includedir}/libsoup-2.4
+%{_pkgconfigdir}/libsoup-2.4.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/libsoup-2.2.a
+%{_libdir}/libsoup-2.4.a
 
 %files apidocs
 %defattr(644,root,root,755)
