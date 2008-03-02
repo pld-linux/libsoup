@@ -1,20 +1,18 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.3.2
+Version:	2.3.4
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.3/%{name}-%{version}.tar.bz2
-# Source0-md5:	3a0de2bc4e3409e3376e2091c836f59a
-Patch0:		%{name}-static.patch
+# Source0-md5:	2def3fc29e0377d18e150ddd39118c9a
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.15.5
+BuildRequires:	glib2-devel >= 1:2.15.6
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk-doc >= 1.6
-BuildRequires:	libgpg-error-devel >= 0.4
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
@@ -37,7 +35,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.15.5
+Requires:	glib2-devel >= 1:2.15.6
 Requires:	gnutls-devel >= 1.2.5
 Requires:	libxml2-devel >= 1:2.6.31
 
@@ -74,19 +72,17 @@ Dokumentacja API libsoup.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__glib_gettextize}
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-ssl \
 	--enable-gtk-doc \
-	--enable-libgpg-error \
 	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
