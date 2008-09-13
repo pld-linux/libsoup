@@ -1,12 +1,12 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.23.91
+Version:	2.23.92
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	6faf7318735540265534ea786b2341dd
+# Source0-md5:	d2cb29312ee513da196cc1a9538a1053
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
