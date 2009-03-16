@@ -1,21 +1,23 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.24.3
+Version:	2.26.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.24/%{name}-%{version}.tar.bz2
-# Source0-md5:	118967f097a7e1e9d5023f1f06e0b65a
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.26/%{name}-%{version}.tar.bz2
+# Source0-md5:	9df9d2b3304213641d3214a774d75ee1
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	glib2-devel >= 1:2.20.0
 BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	libproxy-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
+BuildRequires:	sqlite3-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,7 +37,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.16.0
+Requires:	glib2-devel >= 1:2.20.0
 Requires:	gnutls-devel >= 1.2.5
 Requires:	libxml2-devel >= 1:2.6.31
 
@@ -57,6 +59,43 @@ SOAP static libraries.
 
 %description static -l pl.UTF-8
 Biblioteki statyczne SOAP.
+
+%package gnome
+Summary:	GNOME specific extensions to libsoup library
+Summary(pl.UTF-8):	Rozszerzenia GNOME do biblioteki libsoup
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description gnome
+GNOME specific extensions to libsoup library.
+
+%description gnome -l pl.UTF-8
+Rozszerzenia GNOME do biblioteki libsoup.
+
+%package gnome-devel
+Summary:	Header files for libsoup-gnome library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsoup-gnome
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-gnome = %{version}-%{release}
+
+%description gnome-devel
+Header files for libsoup-gnome library.
+
+%description gnome-devel -l pl.UTF-8
+Pliki nagłówkowe biblioteki libsoup-gnome.
+
+%package gnome-static
+Summary:	Static libsoup-gnome library
+Summary(pl.UTF-8):	Statyczna biblioteka libsoup-gnome
+Group:		Development/Libraries
+Requires:	%{name}-gnome-devel = %{version}-%{release}
+
+%description gnome-static
+Static libsoup-gnome library.
+
+%description gnome-static -l pl.UTF-8
+Statyczna biblioteka libsoup-gnome.
 
 %package apidocs
 Summary:	libsoup API documentation
@@ -100,6 +139,9 @@ rm -rf $RPM_BUILD_ROOT
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%post	gnome -p /sbin/ldconfig
+%postun	gnome -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
@@ -116,6 +158,22 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libsoup-2.4.a
+
+%files gnome
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsoup-gnome-2.4.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libsoup-gnome-2.4.so.1
+
+%files gnome-devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libsoup-gnome-2.4.so
+%{_libdir}/libsoup-gnome-2.4.la
+%{_includedir}/libsoup-gnome-2.4
+%{_pkgconfigdir}/libsoup-gnome-2.4.pc
+
+%files gnome-static
+%defattr(644,root,root,755)
+%{_libdir}/libsoup-gnome-2.4.a
 
 %files apidocs
 %defattr(644,root,root,755)
