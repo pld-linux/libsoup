@@ -11,7 +11,7 @@ URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 1:2.22.0
-BuildRequires:	gnutls-devel >= 1.2.5
+BuildRequires:	gnutls-devel >= 2.1.7
 BuildRequires:	gtk-doc >= 1.6
 BuildRequires:	libproxy-devel
 BuildRequires:	libtool
