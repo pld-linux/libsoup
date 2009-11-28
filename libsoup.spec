@@ -8,8 +8,10 @@ Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.28/%{name}-%{version}.tar.bz2
 # Source0-md5:	6c303cae11bde065497992d2444cc96a
 URL:		http://www.gnome.org/
+BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnome-keyring-devel
 BuildRequires:	gnutls-devel >= 2.1.7
