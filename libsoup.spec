@@ -6,7 +6,7 @@ Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	900390c0ead254fbb23f3f0b84fd18bb
+# Source0-md5:	2d18154b869da541c2c0909b443f053a
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.63
