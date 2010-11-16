@@ -15,13 +15,15 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	glib2-devel >= 1:2.22.0
 BuildRequires:	gnutls-devel >= 2.1.7
 BuildRequires:	gobject-introspection-devel >= 0.9.5
-BuildRequires:	gtk-doc >= 1.6
+BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libproxy-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
+Requires:	glib2 >= 1:2.22.0
+Requires:	gnutls >= 2.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
