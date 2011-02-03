@@ -45,6 +45,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.22.0
 Requires:	gnutls-devel >= 2.1.7
+Requires:	libproxy-devel
 Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
