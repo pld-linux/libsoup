@@ -1,12 +1,12 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.33.6
+Version:	2.33.90
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.33/%{name}-%{version}.tar.bz2
-# Source0-md5:	3a7219057d289dd7dcdd67681d27eebe
+# Source0-md5:	967b0934866be9668a15b64e4f5ff23d
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.63
@@ -21,7 +21,8 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
-Requires:	glib2 >= 1:2.22.0
+Requires:	glib-networking
+Requires:	glib2 >= 1:2.28.0
 Requires:	gnutls >= 2.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,7 +43,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.22.0
+Requires:	glib2-devel >= 1:2.28.0
 Requires:	gnutls-devel >= 2.1.7
 Requires:	libproxy-devel
 Requires:	libxml2-devel >= 1:2.6.31
@@ -130,6 +131,7 @@ Dokumentacja API libsoup.
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	--without-apache-httpd \
+	--disable-tls-check \
 	--disable-silent-rules
 %{__make}
 
@@ -137,11 +139,10 @@ Dokumentacja API libsoup.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	pkgconfigdir=%{_pkgconfigdir} \
-	m4datadir=%{_aclocaldir} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT/%{_libdir}/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
