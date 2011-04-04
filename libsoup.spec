@@ -1,20 +1,19 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.32.2
-Release:	2
+Version:	2.34.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.32/%{name}-%{version}.tar.bz2
-# Source0-md5:	03f37350a2a31046ebabb8470e75abcc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.34/%{name}-%{version}.tar.bz2
+# Source0-md5:	b02e27dee6e4451a216271fd992f1aee
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	glib2-devel >= 1:2.22.0
-BuildRequires:	gnutls-devel >= 2.1.7
-BuildRequires:	gobject-introspection-devel >= 0.9.5
+BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libproxy-devel
@@ -22,7 +21,8 @@ BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
-Requires:	glib2 >= 1:2.22.0
+Requires:	glib-networking
+Requires:	glib2 >= 1:2.28.0
 Requires:	gnutls >= 2.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.22.0
+Requires:	glib2-devel >= 1:2.28.0
 Requires:	gnutls-devel >= 2.1.7
 Requires:	libproxy-devel
 Requires:	libxml2-devel >= 1:2.6.31
@@ -128,9 +128,10 @@ Dokumentacja API libsoup.
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-ssl \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
+	--without-apache-httpd \
+	--disable-tls-check \
 	--disable-silent-rules
 %{__make}
 
@@ -138,9 +139,9 @@ Dokumentacja API libsoup.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	pkgconfigdir=%{_pkgconfigdir} \
-	m4datadir=%{_aclocaldir} \
 	DESTDIR=$RPM_BUILD_ROOT
+
+%{__rm} $RPM_BUILD_ROOT/%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -161,7 +162,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsoup-2.4.so
-%{_libdir}/libsoup-2.4.la
 %{_includedir}/libsoup-2.4
 %{_pkgconfigdir}/libsoup-2.4.pc
 %{_datadir}/gir-1.0/Soup-2.4.gir
@@ -179,7 +179,6 @@ rm -rf $RPM_BUILD_ROOT
 %files gnome-devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libsoup-gnome-2.4.so
-%{_libdir}/libsoup-gnome-2.4.la
 %{_includedir}/libsoup-gnome-2.4
 %{_pkgconfigdir}/libsoup-gnome-2.4.pc
 %{_datadir}/gir-1.0/SoupGNOME-2.4.gir
