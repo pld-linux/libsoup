@@ -23,7 +23,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
 Requires:	glib-networking
 Requires:	glib2 >= 1:2.28.0
-Requires:	gnutls >= 2.1.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,7 +43,6 @@ Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
-Requires:	gnutls-devel >= 2.1.7
 Requires:	libproxy-devel
 Requires:	libxml2-devel >= 1:2.6.31
 
@@ -141,7 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} $RPM_BUILD_ROOT/%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
