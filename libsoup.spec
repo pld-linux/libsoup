@@ -17,7 +17,7 @@ BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libproxy-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	sqlite3-devel
