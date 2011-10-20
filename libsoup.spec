@@ -44,7 +44,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
+Requires:	glib2-devel >= 1:2.30.0
 Requires:	libproxy-devel
 Requires:	libxml2-devel >= 1:2.6.31
 
