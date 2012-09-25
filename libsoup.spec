@@ -1,20 +1,21 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.38.1
+Version:	2.40.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.38/%{name}-%{version}.tar.xz
-# Source0-md5:	d13fb4968acea24c26b83268a308f580
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.40/%{name}-%{version}.tar.xz
+# Source0-md5:	4d66366e08271e22aef164ec4d74e5f0
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.33.1
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.10
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
@@ -23,7 +24,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	glib-networking
-Requires:	glib2 >= 1:2.32.0
+Requires:	glib2 >= 1:2.33.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -43,7 +44,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.32.0
+Requires:	glib2-devel >= 1:2.33.1
 Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
@@ -119,7 +120,7 @@ Dokumentacja API libsoup.
 
 %build
 %{__gtkdocize}
-%{__glib_gettextize}
+%{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -141,6 +142,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
+%find_lang libsoup
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -150,7 +153,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	gnome -p /sbin/ldconfig
 %postun	gnome -p /sbin/ldconfig
 
-%files
+%files -f libsoup.lang
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS README
 %attr(755,root,root) %{_libdir}/libsoup-2.4.so.*.*.*
