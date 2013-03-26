@@ -1,22 +1,21 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.40.3
+Version:	2.42.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.40/%{name}-%{version}.tar.xz
-# Source0-md5:	ee111c5cf9f95b4a7aa24afe13dddb98
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.42/%{name}-%{version}.tar.xz
+# Source0-md5:	a632a38d2983c2a88679672d00940128
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.33.1
+BuildRequires:	glib2-devel >= 1:2.35.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.10
 BuildRequires:	intltool >= 0.35.0
-BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
@@ -24,7 +23,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	glib-networking
-Requires:	glib2 >= 1:2.33.1
+Requires:	glib2 >= 1:2.35.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,7 +43,7 @@ Summary:	Include files etc to develop SOAP applications
 Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.33.1
+Requires:	glib2-devel >= 1:2.35.0
 Requires:	libxml2-devel >= 1:2.6.31
 
 %description devel
