@@ -1,12 +1,12 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.50.0
+Version:	2.52.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.50/%{name}-%{version}.tar.xz
-# Source0-md5:	9a84d66e1b7ccd3bd340574b11eccc15
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.52/%{name}-%{version}.tar.xz
+# Source0-md5:	74ef72cd984dc6daf3ba601288974c26
 URL:		http://www.gnome.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
@@ -114,6 +114,19 @@ libsoup API documentation.
 %description apidocs -l pl.UTF-8
 Dokumentacja API libsoup.
 
+%package -n vala-libsoup
+Summary:	libsoup API for Vala language
+Summary(pl.UTF-8):	API libsoup dla języka Vala
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala
+
+%description -n vala-libsoup
+libsoup API for Vala language.
+
+%description -n vala-libsoup -l pl.UTF-8
+API libsoup dla języka Vala.
+
 %prep
 %setup -q
 
@@ -190,3 +203,7 @@ rm -rf $RPM_BUILD_ROOT
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libsoup-2.4
+
+%files -n vala-libsoup
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/libsoup-2.4.vapi
