@@ -14,7 +14,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk-doc >= 1.10
+BuildRequires:	gtk-doc >= 1.20
 BuildRequires:	heimdal-devel
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool >= 2:2.0
