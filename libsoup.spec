@@ -1,32 +1,35 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.64.2
+Version:	2.66.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.64/%{name}-%{version}.tar.xz
-# Source0-md5:	cac755dc6c6acd6e0c70007f547548f5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.66/%{name}-%{version}.tar.xz
+# Source0-md5:	5f04c09a06f6dbe4c4d3f003992145ce
 URL:		https://wiki.gnome.org/Projects/libsoup
-BuildRequires:	autoconf >= 2.63
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.20
 BuildRequires:	heimdal-devel
-BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libpsl-devel >= 0.20.0
-BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
+BuildRequires:	meson >= 0.48
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	vala
 BuildRequires:	xz
 Requires:	glib2 >= 1:2.38.0
 Requires:	libpsl >= 0.20.0
+# for TLS support
 Suggests:	glib-networking
+# ntlm_auth for NTLM support
+Suggests:	samba-winbind
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -140,28 +143,19 @@ API libsoup dla języka Vala.
 %setup -q
 
 %build
-%{__gtkdocize}
-%{__intltoolize}
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
-	--without-apache-httpd \
-	--disable-tls-check \
-	--disable-silent-rules
-%{__make}
+%meson build \
+	-Ddoc=true \
+	-Dntlm=true \
+	-Dntlm_auth=/usr/bin/ntlm_auth \
+	-Dtests=false \
+	-Dtls_check=false
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+%ninja_install -C build
 
 %find_lang libsoup
 
@@ -176,7 +170,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f libsoup.lang
 %defattr(644,root,root,755)
-%doc AUTHORS NEWS README
+%doc AUTHORS MAINTAINERS NEWS README
 %attr(755,root,root) %{_libdir}/libsoup-2.4.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsoup-2.4.so.1
 %{_libdir}/girepository-1.0/Soup-2.4.typelib
