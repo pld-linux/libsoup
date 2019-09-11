@@ -1,0 +1,24 @@
+--- libsoup-2.68.0/meson.build.orig	2019-09-11 11:08:25.000000000 +0200
++++ libsoup-2.68.0/meson.build	2019-09-11 17:30:07.856616832 +0200
+@@ -311,11 +311,18 @@
+ ################
+ # NTLM not supported on Windows
+ if host_machine.system() != 'windows'
+-  ntlm_auth = find_program(get_option('ntlm_auth'), required: get_option('ntlm'))
++  ntlm_auth_path = get_option('ntlm_auth')
++  if ntlm_auth_path[0] == '/'
++    ntlm_auth_found = true
++  else
++    ntlm_auth = find_program(get_option('ntlm_auth'), required: get_option('ntlm'))
++    ntlm_auth_found = ntlm_auth.found()
++    ntlm_auth_path = ntlm_auth.path()
++  endif
+ 
+-  if ntlm_auth.found()
++  if ntlm_auth_found
+     add_project_arguments('-DUSE_NTLM_AUTH=1', language : 'c')
+-    add_project_arguments('-DNTLM_AUTH="' + ntlm_auth.path() + '"', language : 'c')
++    add_project_arguments('-DNTLM_AUTH="' + ntlm_auth_path + '"', language : 'c')
+   endif
+ endif
+ 

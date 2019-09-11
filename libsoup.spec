@@ -1,12 +1,13 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.66.2
+Version:	2.68.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.66/%{name}-%{version}.tar.xz
-# Source0-md5:	66c2ae89d6031b01337d78a2c57c75d5
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.68/%{name}-%{version}.tar.xz
+# Source0-md5:	be8181fc6c0e0f3a5f269eef7e40a351
+Patch0:		%{name}-path-override.patch
 URL:		https://wiki.gnome.org/Projects/libsoup
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
@@ -14,9 +15,10 @@ BuildRequires:	glib2-devel >= 1:2.38.0
 BuildRequires:	gobject-introspection-devel >= 0.10.0
 BuildRequires:	gtk-doc >= 1.20
 BuildRequires:	heimdal-devel
+BuildRequires:	libbrotli-devel
 BuildRequires:	libpsl-devel >= 0.20.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	meson >= 0.48
+BuildRequires:	meson >= 0.50
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
@@ -24,6 +26,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 BuildRequires:	xz
+BuildRequires:	zlib-devel
 Requires:	glib2 >= 1:2.38.0
 Requires:	libpsl >= 0.20.0
 # for TLS support
@@ -141,11 +144,13 @@ API libsoup dla języka Vala.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %meson build \
 	-Ddoc=true \
-	-Dntlm=true \
+	-Dgtk_doc=true \
+	-Dntlm=enabled \
 	-Dntlm_auth=/usr/bin/ntlm_auth \
 	-Dtests=false \
 	-Dtls_check=false
