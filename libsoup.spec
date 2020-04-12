@@ -1,12 +1,12 @@
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.68.4
+Version:	2.70.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.68/%{name}-%{version}.tar.xz
-# Source0-md5:	603f3a945cd6ecc1fda644d7853b3b81
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.70/%{name}-%{version}.tar.xz
+# Source0-md5:	c539f5b5ab534f024dc4e6a14e6d3f54
 Patch0:		%{name}-path-override.patch
 URL:		https://wiki.gnome.org/Projects/libsoup
 BuildRequires:	docbook-dtd412-xml
@@ -116,7 +116,7 @@ Summary:	libsoup API documentation
 Summary(pl.UTF-8):	Dokumentacja API libsoup
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -132,7 +132,7 @@ Summary(pl.UTF-8):	API libsoup dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -175,7 +175,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f libsoup.lang
 %defattr(644,root,root,755)
-%doc AUTHORS MAINTAINERS NEWS README
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_libdir}/libsoup-2.4.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsoup-2.4.so.1
 %{_libdir}/girepository-1.0/Soup-2.4.typelib
