@@ -1,19 +1,23 @@
+#
+# Conditional build:
+%bcond_without	apidocs	# API documentation
+
 Summary:	SOAP (Simple Object Access Protocol) implementation in C
 Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
 Name:		libsoup
-Version:	2.70.0
+Version:	2.72.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.70/%{name}-%{version}.tar.xz
-# Source0-md5:	c539f5b5ab534f024dc4e6a14e6d3f54
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.72/%{name}-%{version}.tar.xz
+# Source0-md5:	859380b76b51fb55d720daea3c76c945
 Patch0:		%{name}-path-override.patch
 URL:		https://wiki.gnome.org/Projects/libsoup
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.58
 BuildRequires:	gobject-introspection-devel >= 0.10.0
-BuildRequires:	gtk-doc >= 1.20
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.20}
 BuildRequires:	heimdal-devel
 BuildRequires:	libbrotli-devel
 BuildRequires:	libpsl-devel >= 0.20.0
@@ -23,6 +27,7 @@ BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel
+BuildRequires:	sysprof-devel >= 3.38
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	vala
 BuildRequires:	xz
@@ -148,8 +153,7 @@ API libsoup dla języka Vala.
 
 %build
 %meson build \
-	-Ddoc=true \
-	-Dgtk_doc=true \
+	%{?with_apidocs:-Dgtk_doc=true} \
 	-Dntlm=enabled \
 	-Dntlm_auth=/usr/bin/ntlm_auth \
 	-Dtests=false \
@@ -208,9 +212,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libsoup-gnome-2.4.a
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/libsoup-2.4
+%endif
 
 %files -n vala-libsoup
 %defattr(644,root,root,755)
