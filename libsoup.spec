@@ -121,9 +121,7 @@ Summary:	libsoup API documentation
 Summary(pl.UTF-8):	Dokumentacja API libsoup
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 libsoup API documentation.
@@ -137,9 +135,7 @@ Summary(pl.UTF-8):	API libsoup dla języka Vala
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libsoup
 libsoup API for Vala language.
