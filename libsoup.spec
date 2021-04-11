@@ -2,8 +2,8 @@
 # Conditional build:
 %bcond_without	apidocs	# API documentation
 
-Summary:	SOAP (Simple Object Access Protocol) implementation in C
-Summary(pl.UTF-8):	Implementacja w C SOAP (Simple Object Access Protocol)
+Summary:	HTTP client/server library for GNOME
+Summary(pl.UTF-8):	Biblioteka klienta/serwera HTTP dla GNOME
 Name:		libsoup
 Version:	2.72.0
 Release:	1
@@ -42,20 +42,17 @@ Suggests:	samba-winbind
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-It provides an queued asynchronous callback-based mechanism for
-sending and servicing SOAP requests, and a WSDL (Web Service
-Definition Language) to C compiler which generates client stubs and
-server skeletons for easily calling and implementing SOAP methods.
+libsoup is an HTTP client/server library for GNOME. It uses GObjects
+and the glib main loop, to integrate well with GNOME applications.
 
 %description -l pl.UTF-8
-Pakiet dostarcza interfejs kolejkowalnego, asynchronicznego mechanizmu
-do wysyłania i serwowania żądań SOAP oraz WSDL (Web Service Definition
-Language) dla kompilatora C, który generuje klienckie stub i szkielety
-serwerów dla łatwego wywoływania i implementowania metod SOAP.
+libsoup to biblioteka klienta/serwera HTTP dla GNOME. Wykorzystuje
+typy GObject oraz pętlę główną glib, aby dobrze integrować się z
+aplikacjami GNOME.
 
 %package devel
-Summary:	Include files etc to develop SOAP applications
-Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
+Summary:	Header files for libsoup library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsoup
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.58
@@ -67,23 +64,22 @@ Requires:	sysprof-devel >= 3.38
 Requires:	zlib-devel
 
 %description devel
-Header files, etc you can use to develop SOAP applications.
+Header files for libsoup library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe itp. Jednym słowem wszystko czego potrzebujesz aby
-samemu tworzyć sobie aplikacje korzystające z SOAP.
+Pliki nagłówkowe biblioteki libsoup.
 
 %package static
-Summary:	SOAP static libraries
-Summary(pl.UTF-8):	Biblioteki statyczne SOAP
+Summary:	libsoup static library
+Summary(pl.UTF-8):	Biblioteka statyczna libsoup
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-SOAP static libraries.
+libsoup static library.
 
 %description static -l pl.UTF-8
-Biblioteki statyczne SOAP.
+Biblioteka statyczna libsoup.
 
 %package gnome
 Summary:	GNOME specific extensions to libsoup library
