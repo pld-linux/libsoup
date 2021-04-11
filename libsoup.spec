@@ -9,7 +9,7 @@ Version:	2.72.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/libsoup/2.72/%{name}-%{version}.tar.xz
+Source0:	https://download.gnome.org/sources/libsoup/2.72/%{name}-%{version}.tar.xz
 # Source0-md5:	859380b76b51fb55d720daea3c76c945
 Patch0:		%{name}-path-override.patch
 URL:		https://wiki.gnome.org/Projects/libsoup
@@ -25,6 +25,7 @@ BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	meson >= 0.50
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	sqlite3-devel
 BuildRequires:	sysprof-devel >= 3.38
