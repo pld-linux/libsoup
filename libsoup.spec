@@ -59,7 +59,12 @@ Summary(pl.UTF-8):	Pliki nagłówkowe, dokumentacja dla SOAP
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.58
+Requires:	libbrotli-devel
+Requires:	libpsl-devel >= 0.20.0
 Requires:	libxml2-devel >= 1:2.6.31
+Requires:	sqlite3-devel
+Requires:	sysprof-devel >= 3.38
+Requires:	zlib-devel
 
 %description devel
 Header files, etc you can use to develop SOAP applications.
