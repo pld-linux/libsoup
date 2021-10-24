@@ -5,12 +5,12 @@
 Summary:	HTTP client/server library for GNOME
 Summary(pl.UTF-8):	Biblioteka klienta/serwera HTTP dla GNOME
 Name:		libsoup
-Version:	2.74.0
+Version:	2.74.1
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libsoup/2.74/%{name}-%{version}.tar.xz
-# Source0-md5:	076f7ceeb73ebae2cc55a4c2877f6926
+# Source0-md5:	f693d78b2290707f4b3a10757c760c99
 Patch0:		%{name}-path-override.patch
 URL:		https://wiki.gnome.org/Projects/libsoup
 BuildRequires:	docbook-dtd412-xml
