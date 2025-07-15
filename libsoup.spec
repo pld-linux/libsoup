@@ -6,7 +6,7 @@ Summary:	HTTP client/server library for GNOME
 Summary(pl.UTF-8):	Biblioteka klienta/serwera HTTP dla GNOME
 Name:		libsoup
 Version:	2.74.3
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Libraries
 Source0:	https://download.gnome.org/sources/libsoup/2.74/%{name}-%{version}.tar.xz
@@ -150,19 +150,19 @@ API libsoup dla języka Vala.
 %patch -P0 -p1
 
 %build
-%meson build \
+%meson \
 	%{?with_apidocs:-Dgtk_doc=true} \
 	-Dntlm=enabled \
 	-Dntlm_auth=/usr/bin/ntlm_auth \
 	-Dtests=false \
 	-Dtls_check=false
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang libsoup
 
